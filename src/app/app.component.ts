@@ -39,7 +39,16 @@ export class AppComponent {
     const names = items.map(item => {
       return item.position + item.name + item.weight;
     });
-    console.log(names);
-    this.options = names;
+    const copy = [];
+    // tslint:disable-next-line:forin
+    for (const key in items) {
+      const value = items[key];
+      // tslint:disable-next-line:forin
+      for (const key1 in value) {
+        const value1 = value[key1];
+        copy.push(value1);
+      }
+    }
+    this.options = copy;
   }
 }
